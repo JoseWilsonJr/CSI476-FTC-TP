@@ -84,6 +84,14 @@ public class InterfaceDoUsuario
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
 						break;
+					case ":t":						
+						if (comando.length() == 2) {
+							System.out.println("[INFO] Tags validas já cadastradas:");
+							imprimirTags(tags);
+						} else {
+							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
+						}
+						break;
 					default:
 						if (!comando.substring(0, 1).equals(":")) {
 							if (validarTag(comando)) {
@@ -123,10 +131,9 @@ public class InterfaceDoUsuario
 			} else {
 				String msg = "";
 				for (Integer linha : result) {
-					System.out.println(linha);
 					msg = msg + ", " + linha;
 				}
-				System.out.println("[ERROR] Tags nas linhas " + msg.substring(1) + " do arquivo não foram carregadas.");
+				System.out.println("[ERROR] Tags nas linhas" + msg.substring(1) + " do arquivo não foram carregadas.");
 			}
 		} catch (IOException e) {
 			System.out.println("[ERROR] Não foi possível fazer a leitura do arquivo.");
@@ -266,6 +273,12 @@ public class InterfaceDoUsuario
 		}
 	}
 
+	public void imprimirTags(ArrayList<String> tags)
+	{
+		for (String tag : tags) {
+			System.out.println(tag);
+		}
+	}
 	/*
 		Método principal para iniciar aplicação.
 	*/
