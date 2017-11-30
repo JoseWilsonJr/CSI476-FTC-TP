@@ -40,13 +40,26 @@ public class InterfaceDoUsuario
 				}
 				
 				switch (comando.substring(0, 2)) {
+					
+					
 					case ":f":
-						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-							String string = carregarStringArquivo(parametro);
-							classificarTags(string);
+						if (comando.length() == 2) {
+							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
+
+						/* Funcionalidade faz parte da segunda entrega */											
+						/**							
+						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
+						*	String string = carregarStringArquivo(parametro);
+						*	classificarTags(string);
+						*} else {
+						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
+						*}
+						*/
+						
 						break;
 					case ":l":
 						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
@@ -56,19 +69,41 @@ public class InterfaceDoUsuario
 						}
 						break;
 					case ":o":
-						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-							setArquivoDeSaida(parametro);
-							System.out.println("[INFO] Arquivo de saída para divisão em tags definido.");
+						if (comando.length() == 2) {
+							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
+
+						/*Funcionalidade faz parte da segunda entrega */
+						/**
+						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
+						*	setArquivoDeSaida(parametro);
+						*	System.out.println("[INFO] Arquivo de saída para divisão em tags definido.");
+						*} else {
+						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
+						*}
+						*/
+
 						break;
 					case ":p":
-						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-							classificarTags(parametro);
+						if (comando.length() == 2) {
+							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
+
+						/*Funcionalidade faz parte da segunda entrega */
+						/**
+						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
+						*	classificarTags(parametro);
+						*} else {
+						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
+						*}
+						*/
+						
 						break;
 					case ":q":
 						if (comando.length() == 2) {
