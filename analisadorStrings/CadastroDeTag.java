@@ -50,9 +50,9 @@ public class CadastroDeTag
 	}
 	
 	/*
-		Método responsável por validar se expressão polonesa
+		Método responsável por validar se a notação polonesa
 		enviada por parâmetro está correta. O método além de
-		validar a notação polonesa ele converte a mesma para
+		validar a notação polonesa, converte a mesma para
 		a expressão regular equivalente utilizando a estrutura
 		de dados pilha.
 	*/
@@ -82,24 +82,28 @@ public class CadastroDeTag
 							return false;
 						}
 					} else {
-						if (notacaoPolonesa.length() == 1 || i < notacaoPolonesa.length() - 1) {
-							String proximoCaractere = "";
-							if (caractere == '\\') {
-								if (notacaoPolonesa.length() == 2 || (notacaoPolonesa.length() > 1 && i < notacaoPolonesa.length() - 2)) {
-									if (codigoAsciiPermitido((int) notacaoPolonesa.charAt(i+1))) {
-										proximoCaractere = Character.toString(notacaoPolonesa.charAt(++i));
+						if (pilhaAutomato.size() < 2) {
+							if (notacaoPolonesa.length() == 1 || i < notacaoPolonesa.length() - 1) {
+								String proximoCaractere = "";
+								if (caractere == '\\') {
+									if (notacaoPolonesa.length() == 2 || (notacaoPolonesa.length() > 1 && i < notacaoPolonesa.length() - 2)) {
+										if (codigoAsciiPermitido((int) notacaoPolonesa.charAt(i+1))) {
+											proximoCaractere = Character.toString(notacaoPolonesa.charAt(++i));
+										} else {
+											return false;
+										}
 									} else {
 										return false;
 									}
-								} else {
-									return false;
 								}
+								alfabetoAutomato.add(caractere + proximoCaractere);
+								construirAutomato(caractere + proximoCaractere);
+							} else {
+								return false;
 							}
-							alfabetoAutomato.add(caractere + proximoCaractere);
-							construirAutomato(caractere + proximoCaractere);
 						} else {
 							return false;
-						}
+						}	
 					}
 				} else {
 					return false;
