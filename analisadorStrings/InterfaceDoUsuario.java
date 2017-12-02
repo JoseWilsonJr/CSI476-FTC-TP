@@ -45,7 +45,6 @@ public class InterfaceDoUsuario
 					case ":f":
 						if (comando.length() == 2) {
 							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
-							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
@@ -71,7 +70,6 @@ public class InterfaceDoUsuario
 					case ":o":
 						if (comando.length() == 2) {
 							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
-							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
@@ -90,7 +88,6 @@ public class InterfaceDoUsuario
 					case ":p":
 						if (comando.length() == 2) {
 							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
-							imprimirTags(tags);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
