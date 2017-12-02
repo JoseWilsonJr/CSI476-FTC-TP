@@ -1,5 +1,7 @@
 /**
 *@author José Wilson da Silva Júnior 15.1.8156
+*@author Leonardo Barcelos Nardy Dias - 13.2.8646
+*@author Lucas Teotônio Lima - 15.1.5902
 */
 import java.util.Stack;
 import java.util.ArrayList;
@@ -124,7 +126,7 @@ public class CadastroDeTag
 	*/
 	public boolean codigoAsciiPermitido(int codigo)
 	{
-		if (codigo >= 32 && codigo <= 126) {
+		if (codigo >= 32 && codigo <= 126 || codigo == 955) {
 			return true;
 		} else {
 			return false;
