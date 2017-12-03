@@ -70,7 +70,7 @@ public class InterfaceDoUsuario
 						}
 						break;
 					case ":o":
-						if (comando.length() == 2) {
+						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
 							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
