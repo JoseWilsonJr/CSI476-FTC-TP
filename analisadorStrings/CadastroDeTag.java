@@ -84,7 +84,7 @@ public class CadastroDeTag
 							return false;
 						}
 					} else {
-						if (pilhaAutomato.size() < 2) {
+						if (pilhaAutomato.size() <= 2) {
 							if (notacaoPolonesa.length() == 1 || i < notacaoPolonesa.length() - 1) {
 								String proximoCaractere = "";
 								if (caractere == '\\') {
