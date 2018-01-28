@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.PriorityQueue;
 import java.util.HashMap;
 
-public class CadastroDeTag
+public class CadastroTag
 {
 	Tag TAG = new Tag();
 	Stack<AutomatoNaoDeterministico> pilhaAutomato = new Stack<AutomatoNaoDeterministico>();

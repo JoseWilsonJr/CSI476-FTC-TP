@@ -4,5 +4,4 @@
 #@author Lucas Teotônio Lima - 15.1.5902
 ##
 #!/bin/bash
-javac InterfaceUsuario.java
-java InterfaceUsuario
+rm ./*.class

@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class InterfaceDoUsuario
+public class InterfaceUsuario
 {	
 	HashMap<Integer, Tag> tagsCadastradas = new HashMap<Integer, Tag>();
 	ArrayList<String> tags = new ArrayList<String>();
@@ -44,23 +44,13 @@ public class InterfaceDoUsuario
 				switch (comando.substring(0, 2)) {
 					
 					
-					case ":f":
-						if (comando.length() == 2) {
-							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+					case ":f":														
+						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
+							String string = carregarStringArquivo(parametro);
+							classificarTags(string);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
-
-						/* Funcionalidade faz parte da segunda entrega */											
-						/**							
-						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-						*	String string = carregarStringArquivo(parametro);
-						*	classificarTags(string);
-						*} else {
-						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
-						*}
-						*/
-						
 						break;
 					case ":l":
 						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
@@ -71,38 +61,18 @@ public class InterfaceDoUsuario
 						break;
 					case ":o":
 						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+							setArquivoDeSaida(parametro);
+							System.out.println("[INFO] Arquivo de saída para divisão em tags definido.");
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
-
-						/*Funcionalidade faz parte da segunda entrega */
-						/**
-						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-						*	setArquivoDeSaida(parametro);
-						*	System.out.println("[INFO] Arquivo de saída para divisão em tags definido.");
-						*} else {
-						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
-						*}
-						*/
-
 						break;
 					case ":p":
-						if (comando.length() == 2) {
-							System.out.println("[WARNNING] Funcionalidade não implementada para primeira entrega.");
+						if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
+							classificarTags(parametro);
 						} else {
 							System.out.println("[ERROR] Comando inválido, insira um comando válido.");
 						}
-
-						/*Funcionalidade faz parte da segunda entrega */
-						/**
-						*if (!parametro.isEmpty() && comando.charAt(2) == ' ') {
-						*	classificarTags(parametro);
-						*} else {
-						*	System.out.println("[ERROR] Comando inválido, insira um comando válido.");
-						*}
-						*/
-						
 						break;
 					case ":q":
 						if (comando.length() == 2) {
@@ -155,7 +125,7 @@ public class InterfaceDoUsuario
 	public void carregarArquivoDeTags(String nomeArquivo)
 	{
 		try {
-			GerenciadorDeArquivo gerenciadorArquivo = new GerenciadorDeArquivo();
+			GerenciadorArquivo gerenciadorArquivo = new GerenciadorArquivo();
 			ArrayList<Integer> result = gerenciadorArquivo.leitorDeTags(nomeArquivo, tags, nomesTags);
 			for (Tag tmp : gerenciadorArquivo.getTag()) {
 				tagsCadastradas.put(++idTag, tmp);
@@ -181,7 +151,7 @@ public class InterfaceDoUsuario
 	public void salvarTags(String nomeArquivo)
 	{
 		try {
-			GerenciadorDeArquivo gerenciadorArquivo = new GerenciadorDeArquivo();
+			GerenciadorArquivo gerenciadorArquivo = new GerenciadorArquivo();
 			gerenciadorArquivo.escritorDeTags(nomeArquivo, tags);
 			System.out.println("[INFO] Tags salvas com sucesso.");
 		} catch (IOException e) {
@@ -193,7 +163,7 @@ public class InterfaceDoUsuario
 		Chama o validador de tag da classe CadastroDeTag.
 	*/
 	public boolean validarTag(String tag) {
-		CadastroDeTag cadastroTag = new CadastroDeTag();
+		CadastroTag cadastroTag = new CadastroTag();
 		boolean result = cadastroTag.validarDefinicaoTag(tag, nomesTags);
 		if (result) {
 			tagsCadastradas.put(++idTag, cadastroTag.getTag());
@@ -299,7 +269,7 @@ public class InterfaceDoUsuario
 	public String carregarStringArquivo(String nomeArquivo)
 	{
 		try {
-			GerenciadorDeArquivo gerenciadorArquivo = new GerenciadorDeArquivo();
+			GerenciadorArquivo gerenciadorArquivo = new GerenciadorArquivo();
 			return gerenciadorArquivo.lerArquivo(nomeArquivo);
 		} catch (IOException e) {
 			System.out.println("[ERROR] Não foi possível ler o arquivo solicitado.");
@@ -317,7 +287,7 @@ public class InterfaceDoUsuario
 		Método principal para iniciar aplicação.
 	*/
 	public static void main(String[] args) {
-		InterfaceDoUsuario interfaceUsuario = new InterfaceDoUsuario();
+		InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
 		interfaceUsuario.interpretador();
 	}
 }
